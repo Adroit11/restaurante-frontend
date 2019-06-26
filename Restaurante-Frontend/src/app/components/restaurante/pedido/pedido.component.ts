@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-pedido',
@@ -10,11 +11,13 @@ export class PedidoComponent implements OnInit {
   startDate: string;
   formPedido: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private http: HttpClient,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
     this.formPedido = this.formBuilder.group({
-      idPedido: [null],
       mesa: [1],
       atendente: [null],
       horaAbertura: [this.startDate = new Date().toISOString().slice(0, 16)],
@@ -24,6 +27,15 @@ export class PedidoComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formPedido);
+    console.log(this.formPedido.value);
+    this.http.post('http://localhost:52224/api/pedido', this.formPedido.value)
+      .subscribe(
+        response => {
+        console.log(response);
+      },
+      err => {
+        console.log(`Erro:`, err);
+      }
+    );
   }
 }

@@ -1,1 +1,15 @@
 <h6 class="title">LISTA DE PEDIDOS</h6>
+<table class="table table-hover">
+  <thead>
+    <th>Mesa</th>
+    <th>Atendente</th>
+    <th>Hora Abertura</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pedido of pedidos">
+      <td>{{pedido.mesa}}</td>
+      <td>{{pedido.atendente}}</td>
+      <td>{{pedido.horaAbertura}}</td>
+    </tr>
+  </tbody>
+</table>
