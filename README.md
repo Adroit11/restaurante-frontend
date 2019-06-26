@@ -9,11 +9,11 @@ Application built with Angular7.
 
 ### Getting Started
 
-Execute os comandos abaixo para que as dependencias possam ser instaladas:
+Execute os comandos abaixo para que as dependencias possam ser instaladas e o frontend possa ser compilado e executado:
 
 ```
 npm i
 ng serve --o
 ```
 
-Agora é só executar o Visual Studio normalmente.
+
